@@ -35,7 +35,7 @@
       </div>
       <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-          <button type="submit" class="btn btn-default">Kirjaudu sisään</button>
+          <a href="hallinta.php"<button type="submit" class="btn btn-default">Kirjaudu sisään</button></a>
         </div>
       </div>
     </form>
