@@ -26,7 +26,7 @@
       <tbody>
         <tr>
           <td>1.9.2014</td>
-          <td>Hiihtokisa1</td>
+          <td><a href="tulokset.php">Hiihtokisa1</a></td>
           <td>Helsinki</td>
           <td>Ei tietoja</td>
           <td><button type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-check"></span> Tulokset</button></td>
