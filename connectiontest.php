@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /********************/
 /* Konfiguroi tähän */
 /********************/
@@ -10,11 +10,11 @@ $config = array(
   'dburl' => 'pgsql:'
 );
 //MySql-konfiguraatio. Muista vaihtaa socketin osoitteeseen oma käyttäjänimesi, sekä tietokannan nimi ja tunnuksesi
-$config = array(
-  'dburl' => 'mysql:unix_socket=/home/FIXME/mysql/socket;dbname=FIXME',
-  'dbusername' => 'root',
-  'dbpassword' => 'FIXME',
-);
+//$config = array(
+//  'dburl' => 'mysql:unix_socket=/home/FIXME/mysql/socket;dbname=FIXME',
+//  'dbusername' => 'root',
+//  'dbpassword' => 'FIXME',
+//);
 
 /***************************************************************/
 /* Koodia. Tästä tiedostosta ei kannata ottaa mallia mihinkään */
