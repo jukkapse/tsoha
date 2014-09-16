@@ -13,13 +13,18 @@
 		<link href="css/bootstrap-theme.min.css" rel="stylesheet">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
-<html>
     <body>
+	<div class="container">
         <h1>Listaustesti</h1>
         <ul>
             <?php foreach ($lista as $kayttaja): ?>
-                <li><?php echo $kayttaja->getUsername(); ?></li>
+                <?php
+                $kayttajatunnus = $kayttaja->getKayttajaTunnus();
+                $salasana = $kayttaja->getSalasana();
+                ?>
+                <li><?php echo "$kayttajatunnus, $salasana"; ?></li>
              <?php endforeach; ?>
         </ul>
+		</div>
     </body>
 </html>
