@@ -1,7 +1,17 @@
 <?php>
-	require_once "libs/tietokantayhteys.php";
+	require_once "../tietokantayhteys.php";
 	require_once "libs/kayttaja.php";
-	$lista = Kayttaja::etsiKaikkiKayttajat();
+	
+	$sql = "SELECT tunnus, salasana from kayttajat";
+	$kysely = getTietokantayhteys()->prepare($sql);
+	$kysely->execute();
+
+	$tulokset = array();
+	foreach($kysely->fetchAll(PDO::FETCH_OBJ) as $tulos) {
+    $kayttaja = new Kayttaja($tulos->tunnus, $tulos->salasana);
+    $tulokset[] = $kayttaja;
+  }
+
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -16,14 +26,11 @@
     <body>
 	<div class="container">
         <h1>Listaustesti</h1>
-        <ul>
-            <?php foreach ($lista as $kayttaja): ?>
-                <?php
-                $kayttajatunnus = $kayttaja->getKayttajaTunnus();
-                $salasana = $kayttaja->getSalasana();
-                ?>
-                <li><?php echo "$kayttajatunnus, $salasana"; ?></li>
-             <?php endforeach; ?>
+    <p> Käyttäjät listattuna: </p>
+    <ul>
+    <?php foreach($tulokset as $kayttaja) { ?>
+      <li>Tunnus: <?php echo $kayttaja->getTunnus(); ?></li>
+    <?php } ?>
         </ul>
 		</div>
     </body>
