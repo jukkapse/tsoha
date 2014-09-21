@@ -1,16 +1,5 @@
-﻿<!DOCTYPE html>
-<html>
-  <head>
-    <title>Tietokantasovellus</title>
-		<link href="css/bootstrap.css" rel="stylesheet">
-		<link href="css/bootstrap-theme.css" rel="stylesheet">
-		<link href="css/bootstrap-min.css" rel="stylesheet">
-		<link href="css/bootstrap-theme.min.css" rel="stylesheet">
-    <meta charset="utf-8" />
-  </head>
-  <body>
-    <div class="container">
-    <h1>Tietokantasovelluksen esittelysivu</h1>
+﻿
+   <h1>Tietokantasovelluksen esittelysivu</h1>
     <p>Yleisiä linkkejä</p>
     <ul>
 	
@@ -30,7 +19,6 @@
     </ul>
 
     <h2>Työn aihe</h2>
-     &nbsp; &nbsp; &nbsp; &nbsp; 
     <a href="http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Hiihtokisojen_tulospalvelu.html">
       Hiihtokisojen tulospalvelu</a>.
 
@@ -39,6 +27,3 @@
     Pääkäyttäjän tunnus ja salasana:<br /><ul><li><b> testaaja, testisalasana</b></li></ul>
     </p>
 	<img src="./img/bugs.png"></img>
-	</div>
-  </body>
-</html>
