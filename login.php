@@ -1,8 +1,8 @@
-<?php>
+<?php
 	require_once './libs/common.php';
 	require_once "./libs/models/kayttaja.php";
 
-if (!isset($_POST['submit'])) {
+if (!isset($_POST["submit"])) {
     naytaNakyma('loginform.php');
 }
 if (empty($_POST["tunnus"])) {
@@ -24,9 +24,8 @@ $salasana = $_POST["salasana"];
 $kayttaja = Kayttaja::etsiKayttajaTunnuksilla($tunnus, $salasana);
 
 if (isset($kayttaja)) {
-    $_SESSION['kirjautunut'] = $kayttaja->getId();
-
-    header('Location: ./views/kirjautunut.php');
+      $_SESSION['kirjautunut'] = $kayttaja->getId();
+		header('Location: ./hallinta.php');
 } else {
     /* Väärän tunnuksen syöttänyt saa eteensä lomakkeen ja virheen.
      * Tässä käytetään omassa kirjastotiedostossa määriteltyjä yleiskäyttöisiä funktioita.

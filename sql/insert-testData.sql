@@ -1,1 +1,1 @@
-INSERT INTO Kayttaja (Kayttajatunnus, Salasana) values (Testaaja,testisalasana),(Testaaja2, testisalasana2);
+INSERT INTO kayttajat (tunnus, salasana) values ('testaaja','testisalasana'),('testaaja2','testisalasana2');

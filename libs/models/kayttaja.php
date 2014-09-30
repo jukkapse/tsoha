@@ -56,25 +56,22 @@ class Kayttaja {
 	$kysely = getTietokantayhteys()->prepare($sql);
     $kysely->execute(array($this->getId()));
   }
-  public function etsiKaikkiKayttajat(){
-	$slq = "SELECT id, tunnus, salasana FROM kayttajat";
-	$kysely = getTietokantayhteys()->prepare($sql);
-    $kysely->execute();
-	
-    $tulokset = array();
-    foreach ($kysely->fetchAll(PDO::FETCH_OBJ) as $tulos) {
-        $kayttaja = new Kayttaja();
-
-        $kayttaja->setId($tulos->id);
-        $kayttaja->setTunnus($tulos->tunnus);
-        $kayttaja->setSalasana($tulos->salasana);
-
-        $tulokset[] = $kayttaja;
-    }
-    return $tulokset;
+    public static function getKayttajat() {
+        $sql = 'SELECT id, tunnus, salasana from kayttajat';
+        $kysely = getTietokantayhteys()->prepare($sql); $kysely->execute();
+         
+        $tulokset = array();
+        foreach($kysely->fetchAll(PDO::FETCH_OBJ) as $tulos) {
+            $id = $tulos->id;
+            $tunnus = $tulos->tunnus;
+            $salasana = $tulos->salasana;
+            $kayttaja = new Kayttaja($id, $tunnus, $salasana);
+            $tulokset[] = $kayttaja;
+        }
+        return $tulokset;
     }
   public function etsiKayttajaTunnuksilla($kayttaja,$salasana){
-          $sql = "SELECT id, tunnus, salasana FROM kayttajat WHERE tunnus = ? AND salasana = ? LIMIT 1";
+        $sql = "SELECT id, tunnus, salasana FROM kayttajat WHERE tunnus = ? AND salasana = ? LIMIT 1";
         $kysely = getTietokantayhteys()->prepare($sql);
         $kysely->execute(array($kayttaja, $salasana));
 
@@ -82,10 +79,7 @@ class Kayttaja {
         if ($tulos == null) {
             return null;
         } else {
-            $kayttaja = new Kayttaja();
-            $kayttaja->setId($tulos->id);
-            $kayttaja->setTunnus($tulos->tunnus);
-            $kayttaja->setSalasana($tulos->salasana);
+            $kayttaja = new Kayttaja($tulos->id, $tulos->tunnus, $tulos->salasana);
 
             return $kayttaja;
         }
@@ -93,5 +87,4 @@ class Kayttaja {
    public function getVirheet() {
         return $this->virheet;
     }
-
 }
