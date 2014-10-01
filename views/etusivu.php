@@ -23,8 +23,8 @@
 	  <td><?php echo date("d.m.Y", strtotime($kilpailu->getPaivamaara()));?></td>
 	  <td><?php echo $kilpailu->getNimi(); ?></td>
 	  <td><?php echo $kilpailu->getPaikkakunta(); ?></td>
-	  <td>Ei lähtölistaa</td>
-	  <td>Ei tuloksia</td>
+	  <td><a href="./views/lahtolista.php?"<?php echo $kilpailu->getKilpailutunnus();?>>Ei lähtölistaa</a></td>
+	  <td><button type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-check"></span> Tulokset</button></td>
 	  </tr>
     <?php } ?>	
    </table>

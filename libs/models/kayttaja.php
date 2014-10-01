@@ -41,21 +41,6 @@ class Kayttaja {
             unset($this->virheet['salasana']);
         }
   }
-  public function lisaaTietokantaan(){
-	$sql = "INSERT INTO kayttajat(tunnus,salasana) VALUES(?,?) RETURNING id";
-	$kysely = getTietokantayhteys()->prepare($sql);
-	
-	$onnistui = $kysely->execute(array($this->tunnus, $this->salasana));
-	if($onnistui){
-		$this->id = $kysely->fetchColumn();
-	}
-	return $onnistui;
-  }
-  public function poistaTietokannasta(){
-	$sql = "DELETE FROM kayttajat WHERE id=?";
-	$kysely = getTietokantayhteys()->prepare($sql);
-    $kysely->execute(array($this->getId()));
-  }
     public static function getKayttajat() {
         $sql = 'SELECT id, tunnus, salasana from kayttajat';
         $kysely = getTietokantayhteys()->prepare($sql); $kysely->execute();

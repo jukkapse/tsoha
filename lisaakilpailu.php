@@ -6,12 +6,20 @@ if (isset($_SESSION['kirjautunut'])) {
 	
 	if(!isset($_POST['submit'])){
     naytaNakyma('kilpailunLisays.php');	
-	$kilpailu = new Kilpailu();
+	}
+	$kilpailu = new Kilpailu;
 	$kilpailu->setNimi($_POST["nimi"]);
 	$kilpailu->setPaikkakunta($_POST["paikkakunta"]);
 	$kilpailu->setPaivamaara($_POST["paivamaara"]);
- 	$kilpailu->lisaaKantaan();
-	}
-	header('Location: ./hallinta.php');
+	
+	if ($kilpailu->onkoKelvollinen()) {
+    $kilpailu->lisaaKantaan();
+    $_SESSION['ilmoitus'] = "Kilpailu lisätty onnistuneesti.";
+    header('Location: hallinta.php');
+} else {
+    naytaNakyma("kilpailunLisays.php", array(
+        'virheet' => $kilpailu->getVirheet(),
+    ));
+}
 }
 ?>
