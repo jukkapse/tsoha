@@ -23,6 +23,12 @@
 	  <td><?php echo date("d.m.Y", strtotime($kilpailu->getPaivamaara()));?></td>
 	  <td><?php echo $kilpailu->getNimi(); ?></td>
 	  <td><?php echo $kilpailu->getPaikkakunta(); ?></td>
+	  	  	  <form method="GET">
+			<td><button type="submit" name="tulospalvelu" value="<?php echo $kilpailu->getKilpailutunnus(); ?>"  class="btn btn-primary" formaction="tulospalvelu.php">Tulospalvelu</button></td>               
+      </form>
+	  	  <form method="GET">
+			<td><button type="submit" name="kilpailijat" value="<?php echo $kilpailu->getKilpailutunnus(); ?>"  class="btn btn-info" formaction="kilpailijat.php">Kilpailijat</button></td>               
+      </form>
 	  <form method="GET">
 			<td><button type="submit" name="muokattava" value="<?php echo $kilpailu->getKilpailutunnus(); ?>"  class="btn btn-warning" formaction="muokkaaKilpailua.php">Muokkaa</button></td>               
       </form>
@@ -34,10 +40,4 @@
    </table>
    <button class="btn btn-success" onClick="location.href='lisaaKilpailu.php'">Lisää kilpailu</button>
 
-<h3>Kilpailija</h3>
-<ul>
-<li><a href="">Lisää kilpailija</a></li>
-<li><a href="">Muokkaa kilpailijaa</a></li>
-</ul>
-
-<a href="./logout.php"><button type="submit" class="btn btn-default">Kirjaudu ulos</button></a>
+<a href="./logout.php"><button type="submit" class="btn btn-danger">Kirjaudu ulos</button></a>

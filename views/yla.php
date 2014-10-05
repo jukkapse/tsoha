@@ -24,14 +24,19 @@
             unset($_SESSION['virheet']);
         endif;
         ?>
-
-
+		
+		<script>
+function goBack() {
+    window.history.back()
+}
+</script>
 <!DOCTYPE html>
 <html>
     <head>
         <link href="css/bootstrap.css" rel="stylesheet">
         <link href="css/bootstrap-theme.css" rel="stylesheet">
-        <link rel="icon" href="images/noteicon2.png">
+        <link rel="icon" href="img/favicon.ico" type="image/icon">
+		
 
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">

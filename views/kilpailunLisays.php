@@ -21,6 +21,7 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <button name="submit" type="submit" class="btn btn-default">Lisää kilpailu</button>
+
 				
             </div>
         </div>
