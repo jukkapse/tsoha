@@ -4,6 +4,9 @@
 
 if (isset($_SESSION['kirjautunut'])) {
 	
+	if (isset($_POST["paluu"])) {
+    header("Location: hallinta.php");
+	}
 	if(!isset($_POST['submit'])){
     naytaNakyma('kilpailunLisays.php');	
 	}

@@ -1,5 +1,36 @@
-            <?php if (!empty($_SESSION['ilmoitus'])): ?>
-            <div class="alert alert-info">
+<script>
+function startTime() {
+    var today=new Date();
+    var h=today.getHours();
+    var m=today.getMinutes();
+    var s=today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('kello').innerHTML = h+":"+m+":"+s;
+    var t = setTimeout(function(){startTime()},500);
+}
+
+function checkTime(i) {
+    if (i<10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
+</script>
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="css/bootstrap.css" rel="stylesheet">
+        <link href="css/bootstrap-theme.css" rel="stylesheet">
+        <link rel="icon" href="img/favicon.ico" type="image/icon">
+		
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Hiihtokisojen tulospalvelu</title>
+    </head>
+    <body onload="startTime()">
+	<div class="container">
+	            <?php if (!empty($_SESSION['ilmoitus'])): ?>
+            <div class="alert alert-success">
                 <?php echo $_SESSION['ilmoitus']; ?>
             </div>
             <?php unset($_SESSION['ilmoitus']);
@@ -24,23 +55,3 @@
             unset($_SESSION['virheet']);
         endif;
         ?>
-		
-		<script>
-function goBack() {
-    window.history.back()
-}
-</script>
-<!DOCTYPE html>
-<html>
-    <head>
-        <link href="css/bootstrap.css" rel="stylesheet">
-        <link href="css/bootstrap-theme.css" rel="stylesheet">
-        <link rel="icon" href="img/favicon.ico" type="image/icon">
-		
-
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width">
-        <title>Hiihtokisojen tulospalvelu</title>
-    </head>
-    <body>
-	<div class="container">

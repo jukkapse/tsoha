@@ -112,11 +112,12 @@ class Kilpailija {
 	 public function paivitaKantaan() {
         $sql = "UPDATE kilpailija SET kilpailijanumero = ?, nimi = ?, seura = ?, lahtoaika = ? WHERE kilpailijatunnus = ?";
         $kysely = getTietokantayhteys()->prepare($sql);
-        $kysely->execute(array($this->getKilpailutunnus(),
+        $kysely->execute(array(
 			$this->getKilpailijanumero(),
             $this->getNimi(),
             $this->getSeura(),
-            $this->getLahtoaika()));
+            $this->getLahtoaika(),
+			$this->getKilpailijatunnus()));
     }
 	
 	   public function onkoKelvollinen() {
@@ -144,7 +145,7 @@ class Kilpailija {
 	}
 	
 	public function tuloslista($id){
-		$sql = 'SELECT kilpailutunnus, kilpailijatunnus, kilpailijanumero, nimi, seura, lahtoaika, loppuaika from kilpailija where kilpailutunnus = ? order by loppuaika';
+		$sql = 'SELECT kilpailutunnus, kilpailijatunnus, kilpailijanumero, nimi, seura, lahtoaika, loppuaika from kilpailija where kilpailutunnus = ? order by loppuaika-lahtoaika ASC';
 		$kysely = getTietokantayhteys()->prepare($sql);
         $kysely->execute(array($id));
         
@@ -158,9 +159,9 @@ class Kilpailija {
 			$kilpailija->setSeura($tulos->seura);
 			$kilpailija->setLahtoaika($tulos->lahtoaika);
 			$kilpailija->setLoppuaika($tulos->loppuaika);
-			if($tulos->loppuaika != ""){
+			
             $tulokset[] = $kilpailija;
-			}
+			
         }
         return $tulokset;
 	}
@@ -186,10 +187,9 @@ class Kilpailija {
 		return $kilpailija;
 	}
  }
-	public function maaliaika($kilpailijatunnus){
-	 $sql = "UPDATE kilpailija SET loppuaika = ? WHERE kilpailijatunnus = ?";
+	public function maaliaika(){
+	 $sql = "UPDATE kilpailija SET loppuaika = CURRENT_TIME WHERE kilpailijatunnus = ?";
         $kysely = getTietokantayhteys()->prepare($sql);
-        $kysely->execute(array($this->getLoppuaika()));
+        $kysely->execute(array($this->getKilpailijatunnus()));
     }
-	
 }

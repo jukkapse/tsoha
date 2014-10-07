@@ -6,6 +6,7 @@
 ?>
 
 <h1>Tulospalvelun hallinta</h1>
+<table><td>&nbsp;&nbsp;Kilpailuaika:&nbsp;</td><td><div id="kello"></div></td></table>
 
 <h3>Kilpailut</h3>
    <table class="table table-striped">
@@ -24,7 +25,10 @@
 	  <td><?php echo $kilpailu->getNimi(); ?></td>
 	  <td><?php echo $kilpailu->getPaikkakunta(); ?></td>
 	  	  	  <form method="GET">
-			<td><button type="submit" name="tulospalvelu" value="<?php echo $kilpailu->getKilpailutunnus(); ?>"  class="btn btn-primary" formaction="tulospalvelu.php">Tulospalvelu</button></td>               
+			<td><button type="submit" name="tulospalvelu" value="<?php echo $kilpailu->getKilpailutunnus(); ?>"  class="btn btn-primary" formaction="tulospalvelu.php">Ajanotto</button></td>               
+      </form>
+	  	  	  <form method="GET">
+			<td><button type="submit" name="valiaika" value="<?php echo $kilpailu->getKilpailutunnus(); ?>"  class="btn btn-info" formaction="valiaikapisteet.php">Väliaikapisteet</button></td>               
       </form>
 	  	  <form method="GET">
 			<td><button type="submit" name="kilpailijat" value="<?php echo $kilpailu->getKilpailutunnus(); ?>"  class="btn btn-info" formaction="kilpailijat.php">Kilpailijat</button></td>               

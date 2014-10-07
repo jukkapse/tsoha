@@ -16,6 +16,7 @@
           <th>Kilpailun nimi</th>
           <th>Paikkakunta</th>
           <th>Lähtölista</th>
+		  <th>Väliajat</th>
           <th>Lopputulokset</th>
         </tr>
       </thead>
@@ -29,6 +30,7 @@
 	  <td> 
 	  <?php if (empty($lahtolista)) echo "Ei lähtölistaa"; else include "lahtonappula.php";?>
 	  </td>
+	  <td><?php if (empty($tuloslista)) echo "Ei väliaikoja"; else include "valiaikanappula.php" ?></td>
 	  <td> <?php if (empty($tuloslista)) echo "Ei tuloksia"; else include "tulosnappula.php" ?></td>
 	  </tr>
     <?php } ?>	

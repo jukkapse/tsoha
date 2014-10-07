@@ -36,6 +36,6 @@
     <?php } ?>	
    </table>
    	  <form method="GET">
-			<button type="submit" name="lisaaKilpailija" value="<?php echo $kilpailu->getKilpailutunnus(); ?>"  class="btn btn-success" formaction="lisaaKilpailija.php">Lisää kilpailija</button>              
+			<button type="submit" name="lisaaKilpailija" value="<?php echo $kilpailu->getKilpailutunnus(); ?>"  class="btn btn-success" formaction="lisaaKilpailija.php">Lisää kilpailija</button>    
+			<button type="submit" class="btn btn-default" formaction="hallinta.php">Palaa takaisin</button>			
       </form>
-   <button class="btn btn-default" onclick="goBack()" >Palaa takaisin</button>

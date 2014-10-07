@@ -5,10 +5,15 @@
 
 if (isset($_SESSION['kirjautunut'])) {
 	
+
+
 	if(!isset($_POST['submit'])){
+
 	$_SESSION['kilpailutunnus'] = $_GET['lisaaKilpailija'];
     naytaNakyma('kilpailijanLisays.php');	
+	
 	}
+
 	$kilpailija = new Kilpailija;
 	$kilpailija->setKilpailutunnus($_POST["kilpailutunnus"]);
 	$kilpailija->setKilpailijanumero($_POST["kilpailijanumero"]);

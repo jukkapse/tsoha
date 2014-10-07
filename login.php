@@ -2,6 +2,9 @@
 	require_once './libs/common.php';
 	require_once "./libs/models/kayttaja.php";
 
+if (isset($_POST["paluu"])) {
+    header("Location: index.php");
+}
 if (!isset($_POST["submit"])) {
     naytaNakyma('loginform.php');
 }

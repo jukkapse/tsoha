@@ -5,6 +5,7 @@
 	$kilpailuid = $_SESSION['kilpailuid'];
 	$kilpailijat = Kilpailija::tuloslista($kilpailuid);
 	$kilpailu = Kilpailu::etsiKilpailu($kilpailuid);
+	$sijoitus = 0;
 
 
 ?>
@@ -14,7 +15,7 @@
    <table class="table table-striped">
 	    <thead>
         <tr>
-          <th>Kilpailunumero</th>
+		<th>Sijoitus</th>
           <th>Nimi</th>
           <th>Seura</th>
           <th>Loppuaika</th>
@@ -22,13 +23,28 @@
         </tr>
       </thead>
 	 <?php foreach($kilpailijat as $kilpailija) { ?>
+	 <?php 	
+
+			$parasLahto = new Datetime(date('Y-m-d H:i:s', strtotime($kilpailijat[0]->getLahtoaika())));
+			$parasMaali = new Datetime(date('Y-m-d H:i:s', strtotime($kilpailijat[0]->getLoppuaika())));
+			$parastulos = $parasMaali->diff($parasLahto); 
+			$parasaika = new Datetime(date($parastulos->format('%Y-%m-%d %H:%i:%s')));
+			$lahtoaika = new Datetime(date('Y-m-d H:i:s', strtotime($kilpailija->getLahtoaika())));
+			$maaliaika = new Datetime(date('Y-m-d H:i:s', strtotime($kilpailija->getLoppuaika())));
+			$suoritus = $maaliaika->diff($lahtoaika); 
+			$suoritusaika = new Datetime(date($suoritus->format('%Y-%m-%d %H:%i:%s')));
+			$erokarkeen = $parasaika->diff($suoritusaika);
+			$erokarkeen = date('H:i:s', strtotime($erokarkeen->format('%Y-%m-%d %H:%i:%s')));
+			$suoritus = date('H:i:s', strtotime($suoritus->format('%Y-%m-%d %H:%i:%s')));
+			?>
       <tr>
-	  <td><?php echo $kilpailija->getKilpailijanumero();?></td>
+	  <td><?php if($kilpailija->getLoppuaika() == "") echo "-"; else echo $sijoitus = $sijoitus + 1;?></td>
 	  <td><?php echo $kilpailija->getNimi(); ?></td>
 	  <td><?php echo $kilpailija->getSeura(); ?></td>
-	  <td><?php if($kilpailija->getLoppuaika() == null) echo "Ei aikaa"; else echo $kilpailija->getLoppuaika(); ?></td>
+	  <td><?php if($kilpailija->getLoppuaika() == "") echo "Ei aikaa"; else echo $suoritus; ?></td>
+	  <td><?php if($kilpailija->getLoppuaika() == "" || $sijoitus == 1) echo ""; else echo  "+ $erokarkeen"; ?></td>
 	  </tr>
     <?php } ?>	
    </table>
    
-   <button class="btn btn-default" onclick="goBack()" >Palaa takaisin</button>
+   <button class="btn btn-default" onClick="location.href='index.php'" >Palaa takaisin</button>

@@ -28,6 +28,7 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <button name="tallennaNappi" type="submit" class="btn btn-default">Muokkaa kilpailu</button>
+				<button name="paluu" type="submit" class="btn btn-default">Palaa takaisin</button>
             </div>
         </div>
     </form>

@@ -30,4 +30,4 @@
     <?php } ?>	
    </table>
    
-   <button class="btn btn-default" onclick="goBack()" >Palaa takaisin</button>
+   <button class="btn btn-default" onClick="location.href='index.php'" >Palaa takaisin</button>

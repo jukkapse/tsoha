@@ -21,10 +21,8 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <button name="submit" type="submit" class="btn btn-default">Lisää kilpailu</button>
-
+				<button type="submit" class="btn btn-default" formaction="hallinta.php">Palaa takaisin</button>
 				
             </div>
         </div>
     </form>
-<!--	<button class="btn btn-default" onClick="location.href='hallinta.php'">Takaisin</button>
-	-->

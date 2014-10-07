@@ -27,14 +27,15 @@
 		<div class="form-group">
             <label for="lahtoaika" class="col-md-2 control-label">Lähtöaika:</label>
             <div class="col-md-3">
-                <input type="time" class="form-control" name="lahtoaika" placeholder="Lähtöaika" value="<?php echo $data->lahtoaika; ?>">
+                <input type="text" class="form-control" name="lahtoaika" placeholder="Lähtöaika" value="<?php echo $data->lahtoaika; ?>">
             </div>
         </div>
-        </div>
 		<input type="hidden" name="kilpailijatunnus" value="<?php echo $data->kilpailijatunnus; ?>">
+		<input type="hidden" name="kilpailutunnus" value="<?php echo $data->kilpailutunnus; ?>">
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <button name="tallennaNappi" type="submit" class="btn btn-default">Muokkaa kilpailijaa</button>
+                <button name="muokkaa" type="submit" class="btn btn-default">Muokkaa kilpailijaa</button>
+				<button type="submit" class="btn btn-default" formaction="kilpailijat.php?kilpailijat=<?php echo $data->kilpailutunnus; ?>">Palaa takaisin</button>
             </div>
         </div>
     </form>

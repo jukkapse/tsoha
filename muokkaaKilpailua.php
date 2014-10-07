@@ -4,6 +4,10 @@
 
 	if (isset($_SESSION['kirjautunut'])) {
 	
+	if (isset($_POST["paluu"])) {
+    header("Location: hallinta.php");
+	}
+	
 	if (isset($_GET["muokattava"])) {
     $muokattava = Kilpailu::etsiKilpailu($_GET["muokattava"]);
 

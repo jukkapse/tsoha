@@ -21,17 +21,18 @@
     }
 }
 
-if (isset($_POST["tallennaNappi"])) {
+if (isset($_POST["muokkaa"])) {
     $muokattavalomakkeelta = Kilpailija::etsiKilpailija($_POST["kilpailijatunnus"]);
 	$muokattavalomakkeelta->setKilpailijanumero($_POST["kilpailijanumero"]);
 	$muokattavalomakkeelta->setNimi($_POST["nimi"]);
     $muokattavalomakkeelta->setSeura($_POST["seura"]);
     $muokattavalomakkeelta->setLahtoaika($_POST["lahtoaika"]);
+	$kilpailuid = $_POST['kilpailutunnus'];
 	
 	if ($muokattavalomakkeelta->onkoKelvollinen()) {
         $muokattavalomakkeelta->paivitaKantaan();
         $_SESSION["ilmoitus"] = "Kilpailijan muokkaus onnistui!";
-        header("Location: hallinta.php");
+        header("Location: kilpailijat.php?kilpailijat=$kilpailuid");
 		}
      else {
         naytaNakyma("kilpailijanMuokkaus.php", array(
