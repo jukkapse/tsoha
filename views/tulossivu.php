@@ -39,7 +39,7 @@
 			?>
       <tr>
 	  <td><?php if($kilpailija->getLoppuaika() == "") echo "-"; else echo $sijoitus = $sijoitus + 1;?></td>
-	  <td><?php echo $kilpailija->getNimi(); ?></td>
+	  <td><a href="./kilpailija.php?kilpailijatunnus=<?php echo $kilpailija->getKilpailijatunnus(); ?>"><?php echo $kilpailija->getNimi(); ?></a></td>
 	  <td><?php echo $kilpailija->getSeura(); ?></td>
 	  <td><?php if($kilpailija->getLoppuaika() == "") echo "Ei aikaa"; else echo $suoritus; ?></td>
 	  <td><?php if($kilpailija->getLoppuaika() == "" || $sijoitus == 1) echo ""; else echo  "+ $erokarkeen"; ?></td>
