@@ -5,7 +5,7 @@
 ?>
 
 <h3>Kilpailun muokkaus</h3>
-    <form class="form-horizontal" role="form" action="muokkaaKilpailua.php" method="POST">
+    <form class="form-horizontal" role="form" action="kilpailu.php" method="POST">
         <div class="form-group">
             <label for="paivamaara" class="col-md-2 control-label">Päivämäärä:</label>
             <div class="col-md-3">
@@ -27,8 +27,8 @@
 		<input type="hidden" name="kilpailutunnus" value="<?php echo $data->kilpailutunnus; ?>">
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <button name="tallennaNappi" type="submit" class="btn btn-default">Muokkaa kilpailu</button>
-				<button name="paluu" type="submit" class="btn btn-default">Palaa takaisin</button>
+                <button name="muokkaa" type="submit" class="btn btn-default">Muokkaa kilpailu</button>
+				<button name="hallinta" type="submit" class="btn btn-default">Palaa takaisin</button>
             </div>
         </div>
     </form>

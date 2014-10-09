@@ -39,7 +39,7 @@
 	  ?>
 	  <form method="GET">
 			<input type="hidden" name="kilpailijatunnus" value="<?php echo $kilpailija->getKilpailijatunnus(); ?>">
-			<td><button type="submit" name="valiaika" value="<?php echo $valiaikapiste->getValiaikapistetunnus(); ?>"  class="btn btn-info" formaction="lisaaValiaika.php">Väliaika</button></td> 
+			<td><button type="submit" name="valiaika" value="<?php echo $valiaikapiste->getValiaikapistetunnus(); ?>"  class="btn btn-info" formaction="valiaika.php">Väliaika</button></td> 
       </form>
 	  <?php } else { ?>
 	  <td></td>

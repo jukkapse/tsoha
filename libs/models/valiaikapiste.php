@@ -75,6 +75,10 @@ class Valiaikapiste {
 			$this->getValiaikapistetunnus()));
   }
   public function poistaKannasta(){
+	     $sql = "DELETE FROM valiaika WHERE valiaikapistetunnus = ?";
+        $kysely = getTietokantayhteys()->prepare($sql);
+        $kysely->execute(array($this->getValiaikapistetunnus()));
+        
     $sql = "DELETE FROM valiaikapiste WHERE valiaikapistetunnus = ?";
         $kysely = getTietokantayhteys()->prepare($sql);
         $kysely->execute(array($this->getValiaikapistetunnus()));

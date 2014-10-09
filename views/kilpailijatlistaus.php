@@ -27,15 +27,15 @@
 	  <td><?php echo $kilpailija->getSeura(); ?></td>
 	  <td><?php echo $kilpailija->getLahtoaika(); ?></td>
 	  <form method="GET">
-			<td><button type="submit" name="muokattava" value="<?php echo $kilpailija->getKilpailijatunnus(); ?>"  class="btn btn-warning" formaction="muokkaaKilpailijaa.php">Muokkaa</button></td>               
+			<td><button type="submit" name="muokattava" value="<?php echo $kilpailija->getKilpailijatunnus(); ?>"  class="btn btn-warning" formaction="kilpailija.php">Muokkaa</button></td>               
       </form>
 	  <form method="GET" onsubmit="return confirm('Haluatko varmasti poistaa kilpaililjan?')">
-                <td><button type="submit" name="kilpailijatunnus" value="<?php echo $kilpailija->getKilpailijatunnus(); ?>" class="btn btn-danger" formaction="poistaKilpailija.php" >Poista</button></td>
+                <td><button type="submit" name="poista" value="<?php echo $kilpailija->getKilpailijatunnus(); ?>" class="btn btn-danger" formaction="kilpailija.php" >Poista</button></td>
       </form>
 	  </tr>
     <?php } ?>	
    </table>
    	  <form method="GET">
-			<button type="submit" name="lisaaKilpailija" value="<?php echo $kilpailu->getKilpailutunnus(); ?>"  class="btn btn-success" formaction="lisaaKilpailija.php">Lisää kilpailija</button>    
+			<button type="submit" name="lisaa" value="<?php echo $kilpailu->getKilpailutunnus(); ?>"  class="btn btn-success" formaction="kilpailija.php">Lisää kilpailija</button>    
 			<button type="submit" class="btn btn-default" formaction="hallinta.php">Palaa takaisin</button>			
       </form>

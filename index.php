@@ -1,5 +1,5 @@
  <?php
-  require_once './libs/common.php';
-
-    naytaNakyma('etusivu.php');
+	require_once './libs/common.php';
+	naytaNakyma('etusivu.php');
+?>
 

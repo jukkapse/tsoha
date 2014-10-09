@@ -9,7 +9,6 @@
    
    <h1>Kilpailut</h1>
    <table class="table table-striped">
-	
 	    <thead>
         <tr>
           <th>Päivämäärä</th>
@@ -28,10 +27,24 @@
 	  <td><?php echo $kilpailu->getNimi(); ?></td>
 	  <td><?php echo $kilpailu->getPaikkakunta(); ?></td>
 	  <td> 
-	  <?php if (empty($lahtolista)) echo "Ei lähtölistaa"; else include "lahtonappula.php";?>
+	  <?php if (empty($lahtolista)) echo "Ei lähtölistaa"; else { ?>
+	  <form method="GET">
+			<button type="submit" name="lahtolista" value="<?php echo $kilpailu->getKilpailutunnus(); ?>"  class="btn btn-info" formaction="lahtolista.php">Lähtölista</button>               
+		</form>
+		<?php } ?>
 	  </td>
-	  <td><?php if (empty($tuloslista)) echo "Ei väliaikoja"; else include "valiaikanappula.php" ?></td>
-	  <td> <?php if (empty($tuloslista)) echo "Ei tuloksia"; else include "tulosnappula.php" ?></td>
+	  <td><?php if (empty($tuloslista)) echo "Ei väliaikoja"; else { ?>
+	  <form method="GET">
+			<button type="submit" name="valiajat" value="<?php echo $kilpailu->getKilpailutunnus(); ?>"  class="btn btn-success" formaction="valiaika.php">Valiajat</button>               
+		</form>
+	  </td>
+	  <?php } ?>
+	  <td> <?php if (empty($tuloslista)) echo "Ei tuloksia"; else { ?>
+	  <form method="GET">
+			<button type="submit" name="tulokset" value="<?php echo $kilpailu->getKilpailutunnus(); ?>"  class="btn btn-success" formaction="tulokset.php">Tulokset</button>               
+		</form>
+	  </td>
+	  <?php } ?>
 	  </tr>
     <?php } ?>	
    </table>

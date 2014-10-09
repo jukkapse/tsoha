@@ -5,7 +5,7 @@
 ?>
 
 <h3>Kilpailijan muokkaus</h3>
-    <form class="form-horizontal" role="form" action="muokkaaKilpailijaa.php" method="POST">
+    <form class="form-horizontal" role="form" action="kilpailija.php" method="POST">
         <div class="form-group">
             <label for="kilpailijanumero" class="col-md-2 control-label">Kilpailunumero:</label>
             <div class="col-md-3">

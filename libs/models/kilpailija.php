@@ -105,6 +105,10 @@ class Kilpailija {
 	return $ok;
   }
         public function poistaKannasta() {
+        $sql = "DELETE FROM valiaika WHERE kilpailijatunnus = ?";
+        $kysely = getTietokantayhteys()->prepare($sql);
+        $kysely->execute(array($this->getKilpailijatunnus()));
+        
         $sql = "DELETE FROM kilpailija WHERE kilpailijatunnus = ?";
         $kysely = getTietokantayhteys()->prepare($sql);
         $kysely->execute(array($this->getKilpailijatunnus()));

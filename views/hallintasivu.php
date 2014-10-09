@@ -1,8 +1,7 @@
-<?php
+<?php	
 	require_once './libs/common.php';
 	require_once './libs/models/kilpailu.php';
 	$kilpailut = Kilpailu::getKilpailut();
-
 ?>
 
 <h1>Tulospalvelun hallinta</h1>
@@ -24,24 +23,26 @@
 	  <td><?php echo date("d.m.Y", strtotime($kilpailu->getPaivamaara()));?></td>
 	  <td><?php echo $kilpailu->getNimi(); ?></td>
 	  <td><?php echo $kilpailu->getPaikkakunta(); ?></td>
-	  	  	  <form method="GET">
+	  <form method="GET">
 			<td><button type="submit" name="tulospalvelu" value="<?php echo $kilpailu->getKilpailutunnus(); ?>"  class="btn btn-primary" formaction="tulospalvelu.php">Ajanotto</button></td>               
       </form>
-	  	  	  <form method="GET">
-			<td><button type="submit" name="valiaika" value="<?php echo $kilpailu->getKilpailutunnus(); ?>"  class="btn btn-info" formaction="valiaikapisteet.php">Väliaikapisteet</button></td>               
+	  <form method="GET">
+			<td><button type="submit" name="valiaika" value="<?php echo $kilpailu->getKilpailutunnus(); ?>"  class="btn btn-info" formaction="valiaikapiste.php">Väliaikapisteet</button></td>               
       </form>
-	  	  <form method="GET">
+	  <form method="GET">
 			<td><button type="submit" name="kilpailijat" value="<?php echo $kilpailu->getKilpailutunnus(); ?>"  class="btn btn-info" formaction="kilpailijat.php">Kilpailijat</button></td>               
       </form>
 	  <form method="GET">
-			<td><button type="submit" name="muokattava" value="<?php echo $kilpailu->getKilpailutunnus(); ?>"  class="btn btn-warning" formaction="muokkaaKilpailua.php">Muokkaa</button></td>               
+			<td><button type="submit" name="muokattava" value="<?php echo $kilpailu->getKilpailutunnus(); ?>"  class="btn btn-warning" formaction="kilpailu.php">Muokkaa</button></td>               
       </form>
 	  <form method="GET" onsubmit="return confirm('Haluatko varmasti poistaa kilpailun?')">
-                <td><button type="submit" name="kilpailutunnus" value="<?php echo $kilpailu->getKilpailutunnus(); ?>" class="btn btn-danger" formaction="poistaKilpailu.php" >Poista</button></td>
+                <td><button type="submit" name="poista" value="<?php echo $kilpailu->getKilpailutunnus(); ?>" class="btn btn-danger" formaction="kilpailu.php" >Poista</button></td>
       </form>
 	  </tr>
-    <?php } ?>	
+	<?php } ?>	
    </table>
-   <button class="btn btn-success" onClick="location.href='lisaaKilpailu.php'">Lisää kilpailu</button>
-
-<a href="./logout.php"><button type="submit" class="btn btn-danger">Kirjaudu ulos</button></a>
+   
+	<form method="GET">
+		<button type="submit" name="lisaa" formaction="kilpailu.php" class="btn btn-success">Lisää kilpailu</button>
+		<button type="submit" name="logout" formaction="login.php" class="btn btn-danger">Kirjaudu ulos</button>
+	</form>

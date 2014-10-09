@@ -4,9 +4,9 @@
 	require_once './libs/models/kilpailija.php';
 	
 	if (isset($_SESSION['kirjautunut'])) {	
-	if (isset($_GET["tulospalvelu"])) {
-	$_SESSION['kilpailuid'] = $_GET["tulospalvelu"];
-		naytaNakyma('tulospalvelusivu.php');
-	}	
+		if (isset($_GET["tulospalvelu"])) {
+			$_SESSION['kilpailuid'] = $_GET["tulospalvelu"];
+			naytaNakyma('tulospalvelusivu.php');
+		}	
 	}
 ?>

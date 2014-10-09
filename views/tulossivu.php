@@ -2,9 +2,9 @@
 	require_once "./libs/common.php";
 	require_once "./libs/models/kilpailu.php";
 	require_once "./libs/models/kilpailija.php";
-	$kilpailuid = $_SESSION['kilpailuid'];
-	$kilpailijat = Kilpailija::tuloslista($kilpailuid);
-	$kilpailu = Kilpailu::etsiKilpailu($kilpailuid);
+	$kilpailutunnus = $_SESSION['kilpailutunnus'];
+	$kilpailijat = Kilpailija::tuloslista($kilpailutunnus);
+	$kilpailu = Kilpailu::etsiKilpailu($kilpailutunnus);
 	$sijoitus = 0;
 
 

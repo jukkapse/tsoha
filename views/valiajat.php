@@ -5,10 +5,10 @@
 	require_once "./libs/models/valiaikapiste.php";
 	require_once "./libs/models/valiaika.php";
 	
-	$kilpailuid = $_SESSION['kilpailuid'];
-	$kilpailijat = Kilpailija::tuloslista($kilpailuid);
-	$valiaikapisteet = Valiaikapiste::getValiaikapisteet($kilpailuid);
-	$kilpailu = Kilpailu::etsiKilpailu($kilpailuid);
+	$kilpailutunnus = $_SESSION['kilpailutunnus'];
+	$kilpailijat = Kilpailija::tuloslista($kilpailutunnus);
+	$valiaikapisteet = Valiaikapiste::getValiaikapisteet($kilpailutunnus);
+	$kilpailu = Kilpailu::etsiKilpailu($kilpailutunnus);
 
 
 ?>

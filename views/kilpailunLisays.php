@@ -1,5 +1,5 @@
 <h3>Lisää kilpailu</h3>
-    <form class="form-horizontal" role="form" action="lisaaKilpailu.php" method="POST">
+    <form class="form-horizontal" role="form" action="kilpailu.php" method="POST">
         <div class="form-group">
             <label for="paivamaara" class="col-md-2 control-label">Päivämäärä:</label>
             <div class="col-md-3">
@@ -20,8 +20,8 @@
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <button name="submit" type="submit" class="btn btn-default">Lisää kilpailu</button>
-				<button type="submit" class="btn btn-default" formaction="hallinta.php">Palaa takaisin</button>
+                <button name="lisattava" type="submit" class="btn btn-default">Lisää kilpailu</button>
+				<button type="submit" name="hallinta" class="btn btn-default" formaction="hallinta.php">Palaa takaisin</button>
 				
             </div>
         </div>

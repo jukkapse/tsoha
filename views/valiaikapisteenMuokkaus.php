@@ -5,7 +5,7 @@
 ?>
 
 <h3>Väliaikapisteen muokkaus</h3>
-    <form class="form-horizontal" role="form" action="muokkaaValiaikapistetta.php" method="POST">
+    <form class="form-horizontal" role="form" action="valiaikapiste.php" method="POST">
         <div class="form-group">
             <label for="kilpailijanumero" class="col-md-2 control-label">Matka:</label>
             <div class="col-md-3">
