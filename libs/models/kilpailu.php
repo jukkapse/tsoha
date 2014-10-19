@@ -32,18 +32,28 @@ class Kilpailu {
 	
 	if (trim($this->nimi) == '') {
             $this->virheet['nimi'] = "Sinun täytyy antaa kilpailulle nimi!";
-        } else {
+    } else {
             unset($this->virheet['nimi']);
-        }
+    }
+	if (strlen($this->nimi) > 20){
+			$this->virheet['nimi'] = "Kilpailun nimi ei voi olla yli 20 merkkiä pitkä!";
+	} else {
+            unset($this->virheet['nimi']);
+    }
   }
   
   public function setPaikkakunta($paikkakunta){
 	$this->paikkakunta = siistiString($paikkakunta);
 	if (trim($this->paikkakunta) == '') {
             $this->virheet['paikkakunta'] = "Sinun täytyy antaa paikkakunta!";
-        } else {
+    } else {
             unset($this->virheet['paikkakunta']);
-        }
+    }
+	if (strlen($this->paikkakunta) > 20){
+			$this->virheet['paikkakunta'] = "Kilpailun paikkakunta ei voi olla yli 20 merkkiä pitkä!";
+	} else {
+            unset($this->virheet['paikkakunta']);
+    }	
   }
   
   public function setPaivamaara($paivamaara){

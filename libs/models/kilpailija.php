@@ -49,18 +49,28 @@ class Kilpailija {
 	
 	if (trim($this->nimi) == '') {
             $this->virheet['nimi'] = "Sinun täytyy antaa kilpailijan nimi!";
-        } else {
+    } else {
             unset($this->virheet['nimi']);
-        }
+    }
+	if (strlen($this->nimi) > 20){
+			$this->virheet['nimi'] = "Kilpailijan nimi ei voi olla yli 20 merkkiä pitkä!";
+	} else {
+            unset($this->virheet['nimi']);
+    }
   }
   public function setSeura($seura){
 	$this->seura = siistiString($seura);
 	
 	if (trim($this->seura) == '') {
             $this->virheet['seura'] = "Sinun täytyy antaa kilpailijan seura!";
-        } else {
+    } else {
             unset($this->virheet['seura']);
-        }
+    }
+	if (strlen($this->seura) > 20){
+			$this->virheet['seura'] = "Seuran nimi ei voi olla yli 20 merkkiä pitkä!";
+	} else {
+            unset($this->virheet['seura']);
+    }
   }
   public function setLahtoaika($lahtoaika){
 	$this->lahtoaika = siistiString($lahtoaika);
