@@ -16,6 +16,32 @@
 			header('Location:' . $_SERVER['HTTP_REFERER']);  
 			exit();
 		}
+				
+		if (isset($_GET["lisaa"])) {
+			$_SESSION['kilpailutunnus'] = $_GET['lisaa'];
+			naytaNakyma('kilpailijanLisays.php');
+
+		}
+		
+		if(isset($_POST['lisattava'])){
+			$kilpailija = new Kilpailija;
+			$kilpailija->setKilpailutunnus($_POST["kilpailutunnus"]);
+			$kilpailija->setKilpailijanumero($_POST["kilpailijanumero"]);
+			$kilpailija->setNimi($_POST["nimi"]);
+			$kilpailija->setSeura($_POST["seura"]);
+			$kilpailija->setLahtoaika($_POST["lahtoaika"]);
+			$kilpailutunnus = $_POST["kilpailutunnus"];
+			
+			if ($kilpailija->onkoKelvollinen()) {
+				$kilpailija->lisaaKantaan();
+				$_SESSION['ilmoitus'] = "Kilpailija lisätty onnistuneesti.";
+				header("Location: kilpailijat.php?kilpailijat=$kilpailutunnus");
+			} else {
+				naytaNakyma("kilpailijanLisays.php", array(
+				'virheet' => $kilpailija->getVirheet(),
+				));
+			}
+		}	
 		
 		if (isset($_GET["muokattava"])) {
 			$muokattava = Kilpailija::etsiKilpailija($_GET["muokattava"]);
@@ -59,31 +85,6 @@
 					));
 			}
 		}
-		
-		if (isset($_GET["lisaa"])) {
-			$_SESSION['kilpailutunnus'] = $_GET['lisaa'];
-			naytaNakyma('kilpailijanLisays.php');
 
-		}
-		
-		if(!isset($_POST['lisattava'])){
-			$kilpailija = new Kilpailija;
-			$kilpailija->setKilpailutunnus($_POST["kilpailutunnus"]);
-			$kilpailija->setKilpailijanumero($_POST["kilpailijanumero"]);
-			$kilpailija->setNimi($_POST["nimi"]);
-			$kilpailija->setSeura($_POST["seura"]);
-			$kilpailija->setLahtoaika($_POST["lahtoaika"]);
-			$kilpailutunnus = $_POST["kilpailutunnus"];
-			
-			if ($kilpailija->onkoKelvollinen()) {
-				$kilpailija->lisaaKantaan();
-				$_SESSION['ilmoitus'] = "Kilpailija lisätty onnistuneesti.";
-				header("Location: kilpailijat.php?kilpailijat=$kilpailutunnus");
-			} else {
-				naytaNakyma("kilpailijanLisays.php", array(
-				'virheet' => $kilpailija->getVirheet(),
-				));
-			}
-		}	
 	}
 ?>

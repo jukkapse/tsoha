@@ -45,7 +45,7 @@ class Kilpailija {
 	$this->kilpailijanumero = $kilpailijanumero;
   }
   public function setNimi($nimi){
-	$this->nimi = $nimi;
+	$this->nimi = siistiString($nimi);
 	
 	if (trim($this->nimi) == '') {
             $this->virheet['nimi'] = "Sinun täytyy antaa kilpailijan nimi!";
@@ -54,7 +54,7 @@ class Kilpailija {
         }
   }
   public function setSeura($seura){
-	$this->seura = $seura;
+	$this->seura = siistiString($seura);
 	
 	if (trim($this->seura) == '') {
             $this->virheet['seura'] = "Sinun täytyy antaa kilpailijan seura!";
@@ -63,7 +63,7 @@ class Kilpailija {
         }
   }
   public function setLahtoaika($lahtoaika){
-	$this->lahtoaika = $lahtoaika;
+	$this->lahtoaika = siistiString($lahtoaika);
 	
 	if (trim($this->lahtoaika) == '') {
             $this->virheet['lahtoaika'] = "Sinun täytyy antaa kilpailijan lähtöaika!";
@@ -72,7 +72,7 @@ class Kilpailija {
         }
   }
   public function setLoppuaika($loppuaika){
-	$this->loppuaika = $loppuaika;
+	$this->loppuaika = siistiString($loppuaika);
   }
 
 	public static function getKilpailijat() {

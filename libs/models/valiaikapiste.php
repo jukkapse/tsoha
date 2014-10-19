@@ -5,6 +5,7 @@ class Valiaikapiste {
   private $valiakapistetunnus;
   private $kilpailutunnus;
   private $matka;
+  private $virheet = array();
 
   public function getValiaikapistetunnus() {
     return $this->valiaikapistetunnus;
@@ -15,14 +16,22 @@ class Valiaikapiste {
   public function getMatka(){
 	return $this->matka;
   }
+  public function getVirheet(){
+	return $this->virheet;
+  }
   public function setValiaikapistetunnus($valiaikapistetunnus){
-	$this->valiaikapistetunnus = $valiaikapistetunnus;
+	$this->valiaikapistetunnus = siistiString($valiaikapistetunnus);
   }
   public function setKilpailutunnus($kilpailutunnus){
-	$this->kilpailutunnus = $kilpailutunnus;
+	$this->kilpailutunnus = siistiString($kilpailutunnus);
   }
   public function setMatka($matka){
-	$this->matka = $matka;
+	$this->matka = siistiString($matka);
+	if (trim($this->matka) == null) {
+            $this->virheet['matka'] = "Sinun täytyy antaa väliaikapisteen matka!";
+        } else {
+            unset($this->virheet['matka']);
+        }
   }
   public function getValiaikapisteet($kilpailutunnus){
   $sql = 'SELECT valiaikapistetunnus, kilpailutunnus, matka from valiaikapiste where kilpailutunnus = ? order by matka';
@@ -83,4 +92,7 @@ class Valiaikapiste {
         $kysely = getTietokantayhteys()->prepare($sql);
         $kysely->execute(array($this->getValiaikapistetunnus()));
   } 
+  public function onkoKelvollinen() {
+        return empty($this->virheet);
+  }
 }

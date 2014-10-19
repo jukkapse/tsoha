@@ -17,7 +17,7 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <button name="muokkaa" type="submit" class="btn btn-default">Muokkaa väliaikapistettä</button>
-				<button type="submit" class="btn btn-default" formaction="valiaikapisteet.php?valiaika=<?php echo $data->kilpailutunnus; ?>">Palaa takaisin</button>
+				<button type="submit" class="btn btn-default" formaction="valiaikapiste.php?valiaika=<?php echo $data->kilpailutunnus; ?>">Palaa takaisin</button>
             </div>
         </div>
     </form>

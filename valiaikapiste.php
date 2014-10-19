@@ -32,23 +32,41 @@
 			$muokattu->setKilpailutunnus($_POST["kilpailutunnus"]);
 			$muokattu->setMatka($_POST["matka"]);
 			$valiaikatunnus = $_POST['kilpailutunnus'];
-			$muokattu->paivitaKantaan();
-			$_SESSION["ilmoitus"] = "Väliaikapisteen muokkaus onnistui!";
-			header("Location: valiaikapisteet.php?valiaika=$valiaikatunnus");
+			if($muokattu->onkoKelvollinen()){
+				$muokattu->paivitaKantaan();
+				$_SESSION["ilmoitus"] = "Väliaikapisteen muokkaus onnistui!";
+				header("Location: valiaikapiste.php?valiaika=$valiaikatunnus");
+			}
+			else{
+				naytaNakyma("valiaikapisteenMuokkaus.php", array(
+				'virheet' => $muokattu->getVirheet(),
+				'matka' => $muokattu->getMatka(),
+				'kilpailutunnus'=>$muokattu->getKilpailutunnus(),
+					));
+			}
 		}
 		if(isset($_GET['lisaa'])){
 			$_SESSION['kilpailutunnus'] = $_GET['lisaa'];
 			naytaNakyma('valiaikapisteenLisays.php');
 		}
 		
-		if(!isset($_POST['lisattava'])){
+		if(isset($_POST['lisattava'])){
 			$valiaikapiste = new Valiaikapiste;
 			$valiaikapiste->setKilpailutunnus($_POST["kilpailutunnus"]);
 			$valiaikapiste->setMatka($_POST["matka"]);
 			$kilpailutunnus = $_POST["kilpailutunnus"];
-			$valiaikapiste->lisaaKantaan();
-			$_SESSION['ilmoitus'] = "Väliaikapiste lisätty onnistuneesti.";
-			header("Location: valiaikapisteet.php?valiaika=$kilpailutunnus");
+			if($valiaikapiste->onkoKelvollinen()){
+				$valiaikapiste->lisaaKantaan();
+				$_SESSION['ilmoitus'] = "Väliaikapiste lisätty onnistuneesti.";
+				header("Location: valiaikapiste.php?valiaika=$kilpailutunnus");
+			}
+			else{
+				naytaNakyma("valiaikapisteenLisays.php", array(
+				'virheet' => $valiaikapiste->getVirheet(),
+				'matka' => $valiaikapiste->getMatka(),
+				'kilpailutunnus'=>$valiaikapiste->getKilpailutunnus(),
+					));
+			}
 		}
 	}	
 ?>

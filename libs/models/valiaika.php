@@ -20,16 +20,16 @@ class Valiaika {
 	return $this->valiaika;
   }
   public function setValiaikatunnus($valiaikatunnus){
-	$this->kilpailutunnus = $valiaikatunnus;
+	$this->kilpailutunnus = siistiString($valiaikatunnus);
   }
   public function setValiaikapistetunnus($valiaikapistetunnus){
-	$this->valiaikapistetunnus = $valiaikapistetunnus;
+	$this->valiaikapistetunnus = siistiString($valiaikapistetunnus);
   }
   public function setKilpailijatunnus($kilpailijatunnus){
-	$this->kilpailijatunnus = $kilpailijatunnus;
+	$this->kilpailijatunnus = siistiString($kilpailijatunnus);
   }
   public function setValiaika($valiaika){
-	$this->valiaika = $valiaika;
+	$this->valiaika = siistiString($valiaika);
   }
   public function getValiajat($valiaikapistetunnus){
   $sql = 'SELECT valiaika.valiaikapistetunnus, valiaika.kilpailijatunnus, valiaika.valiaika, kilpailija.lahtoaika from valiaika, kilpailija where valiaika.kilpailijatunnus = kilpailija.kilpailijatunnus and valiaikapistetunnus = ? order by kilpailija.lahtoaika-valiaika.valiaika DESC';

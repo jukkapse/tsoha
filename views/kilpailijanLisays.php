@@ -28,7 +28,7 @@
 		<input type="hidden" name="kilpailutunnus" value="<?php echo $kilpailutunnus; ?>">
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <button name="submit" type="lisattava" class="btn btn-default">Lisää kilpailija</button>
+                <button name="lisattava" type="submit" class="btn btn-default">Lisää kilpailija</button>
 				<button type="submit" class="btn btn-default" formaction="kilpailijat.php?kilpailijat=<?php echo $kilpailutunnus; ?>">Palaa takaisin</button>
             </div>
         </div>

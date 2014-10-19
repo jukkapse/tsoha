@@ -72,4 +72,29 @@ class Kayttaja {
    public function getVirheet() {
         return $this->virheet;
     }
+		public function lisaaKantaan(){
+		$sql = "INSERT INTO kayttajat (tunnus, salasana) values (?,?) RETURNING id";
+		$kysely = getTietokantayhteys()->prepare($sql);
+		$ok = $kysely->execute(array($this->getTunnus(), $this->getSalasana()));
+		if($ok){
+			$this->id = $kysely->fetchColumn();
+		}
+		return $ok;
+	}
+	
+	public function poistaKannasta() {
+        $sql = "DELETE FROM kayttajat WHERE id = ?";
+        $kysely = getTietokantayhteys()->prepare($sql);
+        $kysely->execute(array($this->getId()));
+    }
+	
+	 public function paivitaKantaan() {
+        $sql = "UPDATE kayttajat SET tunnus = ?, salasana = ? WHERE id = ?";
+        $kysely = getTietokantayhteys()->prepare($sql);
+        $kysely->execute(array(
+			$this->getTunnus(),
+            $this->getSalasana(),
+            $this->getId()));
+    }
+	
 }
